@@ -3,6 +3,9 @@
     <input id="checkbox" type="checkbox" [formControl]="checkboxControl">
     <label for="checkbox">Remove pattern validator</label>
   </p>
-  <input type="text" [formControl]="postCodeControl">
-  <p class="error" *ngIf="postCodeControl.touched && postCodeControl.invalid">Invalid field!</p>
+  <div>
+    <label>Post Code</label>
+    <input type="text" [formControl]="postCodeControl">
+    <p class="error" *ngIf="postCodeControl.touched && postCodeControl.invalid">Invalid field!</p>
+  </div>
 </form>

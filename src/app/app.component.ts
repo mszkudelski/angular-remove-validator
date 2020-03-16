@@ -19,7 +19,7 @@ export class AppComponent  {
         this.postCodeControl.setValidators(this.patternValidator);
         // would look better: this.postCodeControl.clearValidator(Validators.required);
       } else {
-        this.postCodeControl.setValidators(Validators.required);
+        this.postCodeControl.setValidators([Validators.required, this.patternValidator]);
       }
       this.postCodeControl.updateValueAndValidity();
     })
