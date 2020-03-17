@@ -17,9 +17,10 @@ export class AppComponent  {
       if(value) {
         this.postCodeControl.clearValidators();
         this.postCodeControl.setValidators(this.patternValidator);
-        // would look better: this.postCodeControl.clearValidator(Validators.required);
+        // would look better: this.postCodeControl.removeValidator(Validators.required);
       } else {
         this.postCodeControl.setValidators([Validators.required, this.patternValidator]);
+        // would look better: this.postCodeControl.addValidator(Validators.required);
       }
       this.postCodeControl.updateValueAndValidity();
     })
