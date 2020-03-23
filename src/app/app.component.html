@@ -1,11 +1,11 @@
-<form>
+<form [formGroup]="group">
   <p>
-    <input id="checkbox" type="checkbox" [formControl]="checkboxControl">
-    <label for="checkbox">Remove pattern validator</label>
+    <input id="checkbox" type="checkbox" formControlName="checkbox">
+    <label for="checkbox">Remove required validator</label>
   </p>
   <div>
     <label>Post Code</label>
-    <input type="text" [formControl]="postCodeControl">
-    <p class="error" *ngIf="postCodeControl.touched && postCodeControl.invalid">Invalid field!</p>
+    <input type="text" formControlName="postCode">
+    <p class="error" *ngIf="group.get('postCode').touched && group.get('postCode').invalid">Invalid field!</p>
   </div>
 </form>
