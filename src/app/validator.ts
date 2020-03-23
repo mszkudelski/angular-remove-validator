@@ -4,7 +4,6 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
-import { connectableObservableDescriptor } from "rxjs/internal/observable/ConnectableObservable";
 
 export const RequiredIfCheckedValidator: (
   controlName: string,
@@ -14,11 +13,15 @@ export const RequiredIfCheckedValidator: (
     const control = group.get(controlName);
     const checkbox = group.get(checkboxName);
 
+    const errors = control.validator(control);
+
     if (!checkbox.value) {
       const error = Validators.required(control);
-      control.setErrors(error);
+      control.setErrors(
+        control.invalid || error ? { ...error, ...errors } : null
+      );
     } else {
-      control.setErrors(null);
+      control.setErrors(control.invalid ? errors : null);
     }
 
     return null;
